@@ -10,7 +10,7 @@ app = FastAPI()
 @app.get('/ticker/{ticker_name}')
 async def root(ticker_name):
     yahoo_financials = YahooFinancials(ticker_name)
-    stmnts = yahoo_financials.get_financial_stmts('annual', ['income', 'cash', 'balance'])s
+    stmnts = yahoo_financials.get_financial_stmts('annual', ['income', 'cash', 'balance'])
     return stmnts
 #     income_statement = stmnts['incomeStatementHistory'][ticker_name]
 #     cash_statement = stmnts['cashflowStatementHistory'][ticker_name]
