@@ -33,5 +33,5 @@ async def root(ticker_name):
     list_json['is'] = is_json
     list_json['cs'] = cs_json
     list_json['bs'] = bs_json
-    json_obj = json.dumps(list_json)
-    return json_obj
+#     json_obj = json.dumps(list_json)
+    return list_json
