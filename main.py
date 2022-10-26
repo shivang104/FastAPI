@@ -3,6 +3,7 @@ import uvicorn
 from fastapi import FastAPI
 from yahoofinancials import YahooFinancials
 import pandas as pd
+import yfinance as yf
 import json
 
 app = FastAPI()
@@ -12,6 +13,11 @@ async def root(ticker_name):
     yahoo_financials = YahooFinancials(ticker_name)
     stmnts = yahoo_financials.get_financial_stmts('annual', ['income', 'cash', 'balance'])
     return stmnts
+
+@app.get('/tickerSector/{ticker_name}')
+async def roott(ticker_name):
+    tickerdata = yf.Ticker(ticker_name)
+    return tickerdata.info['sector']
 #     income_statement = stmnts['incomeStatementHistory'][ticker_name]
 #     cash_statement = stmnts['cashflowStatementHistory'][ticker_name]
 #     balance_statement = stmnts['balanceSheetHistory'][ticker_name]
